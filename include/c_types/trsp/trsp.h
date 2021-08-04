@@ -38,35 +38,34 @@ typedef double float8;
 #   include <stdint.h>
 #endif
 
-typedef struct edge {
+struct edge_t {
     int64 id;
     int64 source;
     int64 target;
     float8 cost;
     float8 reverse_cost;
-} edge_t;
+};
 
-typedef struct restrict_struct {
+struct restrict_t {
     int target_id;
     float8 to_cost;
     int via[MAX_RULE_LENGTH];
-}
-restrict_t;
+};
 
-typedef struct path_element {
+struct path_element_tt {
     int64 vertex_id;
     int64 edge_id;
     float8 cost;
-} path_element_tt;
+};
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 int trsp_edge_wrapper(
-    edge_t *edges,
+    struct edge_t *edges,
     size_t edge_count,
-    restrict_t *restricts,
+    struct restrict_t *restricts,
     size_t restrict_count,
     int64_t start_edge,
     double start_pos,
@@ -74,7 +73,7 @@ int trsp_edge_wrapper(
     double end_pos,
     bool directed,
     bool has_reverse_cost,
-    path_element_tt **path,
+    struct path_element_tt **path,
     size_t *path_count,
     char **err_msg
 );
