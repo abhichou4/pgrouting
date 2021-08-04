@@ -36,6 +36,7 @@ typedef int64_t int64;
 typedef double float8;
 #else
 #   include <stdint.h>
+#   include <stddef.h>
 #endif
 
 struct edge_t {
